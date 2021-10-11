@@ -1,0 +1,20 @@
+_BASE_: "BASE-MOBINET.yaml"
+
+FINE_TUNING:
+  STATUS: True
+  CV: 5
+
+CLUSTEROR:
+  K_MEANS:
+    CLUSTERS: 4
+
+REGRESSOR:
+  TYPE: 'RF'
+  FEATURES: 'FR2'
+  RF:
+    BOOTSTRAP: [True, False]
+    MAX_DEPTH: [5, 7, 9]
+    MAX_FEATURES: ['auto']
+    MIN_SAMPLES_LEAF: [3, 5, 7]
+    MIN_SAMPLES_SPLIT: [3, 5, 7]
+    N_ESTIMATORS: [100, 150, 200]

@@ -1,0 +1,46 @@
+MODEL:
+  DEBUG: False
+  PLOT: False
+
+##
+DETECTOR:
+  LOAD: False
+
+##
+USER_SELECTOR:
+  STATE: True
+  EPS: 0.2
+  KEEP: 0.95
+
+##
+SOLVER:
+  F_TOP: 0.2
+  PFT: 'POOLING'
+  FEATURE_TYPE: 'VOTE'
+  CORR_TYPE: 'PEARSON'
+  FILTERING: True
+  FILT: 0.1
+
+##
+FE:
+  GAMMA: 0
+  K: 10
+  TAU_e: 10.0
+  TAU_o: 0.66
+  TAU_i: 0.01
+
+##
+PCA:
+  STATE: False
+  N_COMPONENTS: 6
+
+##
+DATASETS:
+  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_test_split_rcnn_v1.json"
+  GT_USER_EXPOS: "dataset/lervup_data/gt_usr_exposure_v1.json"
+  VIS_CONCEPTS: "dataset/lervup_data/visual_concepts/"
+  PRE_VIS_CONCEPTS: "base_algo/base_opt/out/rcnn_optimal_thres_situs_v1.txt"
+
+##
+OUTPUT:
+  VERBOSE: False

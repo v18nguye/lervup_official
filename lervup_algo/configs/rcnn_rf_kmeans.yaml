@@ -1,0 +1,22 @@
+_BASE_: "BASE-RCNN.yaml"
+
+OUTPUT:
+  DIR: 'out'
+
+FINE_TUNING:
+  STATUS: False
+
+CLUSTEROR:
+  K_MEANS:
+    CLUSTERS: 4
+
+REGRESSOR:
+  TYPE: 'RF'
+  FEATURES: 'FR2'
+  RF:
+    BOOTSTRAP: [True]
+    MAX_DEPTH: [7]
+    MAX_FEATURES: ['auto']
+    MIN_SAMPLES_LEAF: [3]
+    MIN_SAMPLES_SPLIT: [4]
+    N_ESTIMATORS: [100]
