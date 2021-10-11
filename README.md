@@ -53,7 +53,7 @@ lervup_offical
       ....
   base_fr_algo
     ....
-  lervup_fr_algo
+  lervup_algo
     ....
 ```
 - The `base_algo` package contains two baselines:
@@ -74,7 +74,7 @@ To fine-tune other hyper-parameters:
 python3 train_test_lervup.py --config_file ./configs/rf_kmeans_ft_mobi_cv5.yaml --model_name it_mobi.pkl --situation IT --N 200 --opts FE.MODE OBJECT  FE.K 10  FE.GAMMA 2  DETECTOR.LOAD True SOLVER.PFT ORG OUTPUT.DIR ./mobinet_models/
 
 ```
-For more details of hyper-parameters, please consult in `configs`, `base_fr_algo/lib/config`, and `lervup_algo/vispel/config` modules of the packages. The experiences on `base_algo` and  `agg_feat_regressor.py` are invoked in the `inference` below section.
+For more details about hyper-parameters, please consult in `configs`, `base_fr_algo/lib/config`, and `lervup_algo/vispel/config` modules of the packages. The experiences on `base_algo` and  `agg_feat_regressor.py` are invoked in the `inference` below section.
 
 ## Inference
 
