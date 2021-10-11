@@ -3,7 +3,7 @@ Official repository.
 
 ## Paper
 
-<img src='./lervup.png' alt="LERVUP" width="500" >
+<img src='./lervup.png' alt="LERVUP" width="1200" >
 
 
 Unveiling Real-Life Effects of Online Photo Sharing \[[arXiv](https://arxiv.org/abs/2012.13180)\]
