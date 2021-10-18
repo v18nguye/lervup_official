@@ -10,7 +10,7 @@ def data_loader(root, cfg, situation, N=-1):
     """
 
     # Basic data-loader
-    X_mini_batches, X_test_set = train_test(root, cfg.DATASETS.TRAIN_TEST_SPLIT)
+    X_mini_batches, X_val_set, X_test_set = train_test(root, cfg.DATASETS.TRAIN_TEST_SPLIT)
     expos = gt_user_expos(root, cfg.DATASETS.GT_USER_EXPOS)
     concepts = vis_concepts(root, cfg.DATASETS.VIS_CONCEPTS)
     X_community = {}
@@ -25,20 +25,24 @@ def data_loader(root, cfg, situation, N=-1):
 
     # select users for debug mode
     if cfg.MODEL.DEBUG:
-        X_train_set = X_mini_batches['30']  # 30 % training users
+        X_train_set = X_mini_batches['50']  # 30 % training users
     else:
         if int(N) == -1:
             X_train_set = X_mini_batches['100']
+
+        elif int(N) == 175:
+            X_train_set = X_mini_batches['50']
         else:
-            X_all = X_mini_batches['100']
-            count = 0
-            X_train_set = {}
-            for user_, photos_ in X_all.items():
-                count += 1
-                if count <= int(N):
-                    X_train_set[user_] = photos_
-                else:
-                    break
+            # X_all = X_mini_batches['100']
+            # count = 0
+            # X_train_set = {}
+            # for user_, photos_ in X_all.items():
+            #     count += 1
+            #     if count <= int(N):
+            #         X_train_set[user_] = photos_
+            #     else:
+            #         break
+            raise ValueError('N is out of the options [-1, 175 (a half number of users)] !')
 
     situ_gt_expos = expos[situation]
     situ_vis_concepts = concepts[situation]
@@ -46,5 +50,5 @@ def data_loader(root, cfg, situation, N=-1):
     # Construct active detectors
     detectors, opt_threds = activator(concepts, situation, \
                                       os.path.join(root, cfg.DATASETS.PRE_VIS_CONCEPTS), cfg.DETECTOR.LOAD)
-    return X_train_set, X_test_set, X_community, \
+    return X_train_set, X_val_set, X_test_set, X_community, \
            situ_gt_expos, situ_vis_concepts, detectors, opt_threds

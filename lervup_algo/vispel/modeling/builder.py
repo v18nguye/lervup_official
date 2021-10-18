@@ -18,13 +18,14 @@ def clusteror_builder(cfg):
         model = KMeans(n_clusters= cfg.CLUSTEROR.K_MEANS.CLUSTERS,\
                        n_init = cfg.CLUSTEROR.K_MEANS.N_INIT,
                        max_iter = cfg.CLUSTEROR.K_MEANS.MAX_ITER,
-                       algorithm = cfg.CLUSTEROR.K_MEANS.ALGORITHM, random_state=0)
+                       algorithm = cfg.CLUSTEROR.K_MEANS.ALGORITHM,
+                       random_state=cfg.MODEL.SEED)
 
     elif cfg.CLUSTEROR.TYPE == 'GM':
         model = GM(n_components=cfg.CLUSTEROR.GM.COMPONENTS, \
                     covariance_type=cfg.CLUSTEROR.GM.COV_TYPE,
                     max_iter=cfg.CLUSTEROR.GM.MAX_ITER,
-                    random_state=0)
+                    random_state=cfg.MODEL.SEED)
 
     return model
 
@@ -45,13 +46,10 @@ def regressor_builder(cfg):
                         gamma= cfg.REGRESSOR.SVM.GAMMA[0], random_state = cfg.MODEL.SEED)
 
         if cfg.REGRESSOR.TYPE == 'RF':
-            # model = RFR(bootstrap = cfg.REGRESSOR.RF.BOOTSTRAP[0], max_depth=cfg.REGRESSOR.RF.MAX_DEPTH[0],\
-            #             max_features = cfg.REGRESSOR.RF.MAX_FEATURES[0], min_samples_leaf=cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF[0],\
-            #             min_samples_split = cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT[0], n_estimators=cfg.REGRESSOR.RF.N_ESTIMATORS[0],\
-            #             random_state = cfg.MODEL.SEED)
             model = RFR(bootstrap = cfg.REGRESSOR.RF.BOOTSTRAP[0], max_depth=cfg.REGRESSOR.RF.MAX_DEPTH[0],\
                         max_features = cfg.REGRESSOR.RF.MAX_FEATURES[0], min_samples_leaf=cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF[0],\
-                        min_samples_split = cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT[0], n_estimators=cfg.REGRESSOR.RF.N_ESTIMATORS[0])
+                        min_samples_split = cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT[0], n_estimators=cfg.REGRESSOR.RF.N_ESTIMATORS[0],\
+                        random_state = cfg.MODEL.SEED)
 
     else:
 
@@ -66,26 +64,19 @@ def regressor_builder(cfg):
                                   'gamma': cfg.REGRESSOR.SVM.GAMMA,
                                   'C': cfg.REGRESSOR.SVM.C,
                                   'random_state': [cfg.MODEL.SEED]}
-
             model = GridSearchCV(SVR(), tuning_params, cv = cfg.FINE_TUNING.CV,
                                     scoring= score_type, refit=list(score_type.keys())[0],
                                     n_jobs= cfg.FINE_TUNING.N_JOBS)
 
         if cfg.REGRESSOR.TYPE == 'RF':
-            # tuning_params = {'bootstrap': cfg.REGRESSOR.RF.BOOTSTRAP,
-            #                     'max_depth': cfg.REGRESSOR.RF.MAX_DEPTH,
-            #                     'max_features': cfg.REGRESSOR.RF.MAX_FEATURES,
-            #                     'min_samples_leaf': cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF,
-            #                     'min_samples_split': cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT,
-            #                     'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS,
-            #                     'random_state': [cfg.MODEL.SEED]}
             tuning_params = {'bootstrap': cfg.REGRESSOR.RF.BOOTSTRAP,
                                 'max_depth': cfg.REGRESSOR.RF.MAX_DEPTH,
                                 'max_features': cfg.REGRESSOR.RF.MAX_FEATURES,
                                 'min_samples_leaf': cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF,
                                 'min_samples_split': cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT,
-                                'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS}
-            
+                                'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS,
+                                'random_state': [cfg.MODEL.SEED]}
+
             model = GridSearchCV(RFR(), tuning_params, cv= cfg.FINE_TUNING.CV,
                                     scoring=score_type, refit=list(score_type.keys())[0],
                                     n_jobs= cfg.FINE_TUNING.N_JOBS)

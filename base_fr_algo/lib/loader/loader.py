@@ -25,9 +25,10 @@ def bloader(root, cfg, situ):
 
     gt_expos = load_gt_user_expo(expo_path)[situ]
     detectors = load_situs(concept_path)[situ]
-    mini_batches, test_data = load_train_test(data_path)
+    train_data, val_data, test_data = load_train_test(data_path)
 
-    x_train = mini_batches['100']
+    x_train = train_data
+    x_val = val_data
     x_test = test_data
 
-    return x_train, x_test, detectors, gt_expos
+    return x_train, x_val, x_test, detectors, gt_expos

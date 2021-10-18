@@ -4,7 +4,8 @@ OUTPUT:
   DIR: 'out'
 
 FINE_TUNING:
-  STATUS: False
+  STATUS: True
+  CV: 5
 
 CLUSTEROR:
   K_MEANS:
@@ -13,10 +14,3 @@ CLUSTEROR:
 REGRESSOR:
   TYPE: 'RF'
   FEATURES: 'FR2'
-  RF:
-    BOOTSTRAP: [True]
-    MAX_DEPTH: [7]
-    MAX_FEATURES: ['auto']
-    MIN_SAMPLES_LEAF: [3]
-    MIN_SAMPLES_SPLIT: [4]
-    N_ESTIMATORS: [100]

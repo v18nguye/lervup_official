@@ -96,11 +96,13 @@ def photo_expo(photo, f_top, detectors, opt_threshs, load_detectors, cfg):
     else:
         objectness = 0
 
+    # Apply Focal Rating
+
     if cfg.FE.MODE == 'IMAGE':
 
         if len(neutral_pos_concepts) != 0:
 
-            ratio = len(attract_pos_concepts) / len(neutral_pos_concepts)
+            ratio = len(attract_pos_concepts) / (len(neutral_pos_concepts) + len(attract_pos_concepts))
             if 0 < ratio < cfg.FE.TAU_o:
                 scale_pos_flag = True
             else:
@@ -109,7 +111,7 @@ def photo_expo(photo, f_top, detectors, opt_threshs, load_detectors, cfg):
             scale_pos_flag = False
 
         if len(neutral_neg_concepts) != 0:
-            ratio = len(attract_neg_concepts) / len(neutral_neg_concepts)
+            ratio = len(attract_neg_concepts) / (len(neutral_neg_concepts) + len(attract_neg_concepts))
             if 0 < ratio < cfg.FE.TAU_o:
                 scale_neg_flag = True
             else:

@@ -6,12 +6,11 @@ import os
 from os.path import dirname, abspath
 root = dirname(dirname(abspath(__file__)))
 
+import copy
 import numpy as np
 from sklearn.decomposition import PCA
-from sklearn.metrics import make_scorer
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestRegressor as RFR
 
+from .tools.ftune_agg_reg import ftune_rf
 from .vispel.config import get_cfg
 from .lib.detectors.activator import activator
 from .lib.corr.corr_type import pear_corr
@@ -25,15 +24,15 @@ def _loader(detector):
     concept_path = "dataset/lervup_data/visual_concepts/"
 
     if detector == 'mobinet':
-        data_path = "dataset/lervup_data/train_test_split_mobinet_v1.json"
-        opt_thresh_path = "base_algo/base_opt/out/mobi_optimal_thres_situs_v1.txt"
+        data_path = "dataset/lervup_data/train_val_test_split_mobinet_v2.json"
+        opt_thresh_path = "base_algo/base_opt/out/mobi_optimal_thres_situs_v2.txt"
     
     elif detector == 'rcnn':
-        data_path = "dataset/lervup_data/train_test_split_rcnn_v1.json"
-        opt_thresh_path = "base_algo/base_opt/out/rcnn_optimal_thres_situs_v1.txt"
+        data_path = "dataset/lervup_data/train_val_test_split_rcnn_v2.json"
+        opt_thresh_path = "base_algo/base_opt/out/rcnn_optimal_thres_situs_v2.txt"
 
     opt_thresh_path = os.path.join(root, opt_thresh_path)
-    data_train, data_test = train_test(root, data_path)
+    data_train, data_val, data_test = train_test(root, data_path)
     gt_expo = gt_user_expos(root, gt_expo_path)
     raw_concepts = vis_concepts(root, concept_path)
     ord_concept = {}  # viual concept ordering
@@ -44,7 +43,7 @@ def _loader(detector):
             count += 1
         break
     
-    return data_train['100'], data_test, gt_expo, raw_concepts, ord_concept, opt_thresh_path
+    return data_train['100'], data_val, data_test, gt_expo, raw_concepts, ord_concept, opt_thresh_path
 
 
 def _features(data, gt_expo, situ, ord_concept, concepts, opt_thresh_path):
@@ -76,50 +75,55 @@ def _features(data, gt_expo, situ, ord_concept, concepts, opt_thresh_path):
 
 def regress(cfg, detector):
     """Regressor"""
-    train, test, gt_expo, raw_concepts, ord_concept, opt_thresh_path = _loader(detector)
+    train, val, test, gt_expo, raw_concepts, ord_concept, opt_thresh_path = _loader(detector)
     for situ, concepts in raw_concepts.items():
         print('***********')
         print(situ)
         print('***********')
 
-        test_results = []
+        val_results = []
+        model_list = []
+        X_test_list = []
+        y_test_list = []
 
         for feat_size in [None, 32, 16, 8]:
 
             X_train, y_train = _features(train, gt_expo, situ, ord_concept, concepts, opt_thresh_path)
+            X_val, y_val = _features(val, gt_expo, situ, ord_concept, concepts, opt_thresh_path)
             X_test, y_test = _features(test, gt_expo, situ, ord_concept, concepts, opt_thresh_path)
 
             if feat_size  == None:
                 X_train_red =  X_train
+                X_val_red = X_val
                 X_test_red = X_test
             else:
                 pca = PCA(n_components=feat_size, svd_solver='full')
                 pca.fit(X_train)
                 X_train_red = pca.transform(X_train)
+                X_val_red = pca.transform(X_val)
                 X_test_red = pca.transform(X_test)
 
-            if cfg.SOLVER.CORR_TYPE == 'PEARSON':
-                score_type = {cfg.SOLVER.CORR_TYPE: make_scorer(pear_corr, greater_is_better=True)}
+            best_model, best_val = ftune_rf(cfg, X_train_red, X_val_red, y_train, y_val)
+            model_list.append(copy.deepcopy(best_model))
+            val_results.append(best_val)
+            X_test_list.append(X_test_red)
+            y_test_list.append(y_test)
 
-            tuning_params = {'bootstrap': cfg.REGRESSOR.RF.BOOTSTRAP,
-                             'max_depth': cfg.REGRESSOR.RF.MAX_DEPTH,
-                             'max_features': cfg.REGRESSOR.RF.MAX_FEATURES,
-                             'min_samples_leaf': cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF,
-                             'min_samples_split': cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT,
-                             'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS,
-                             'random_state': [42]}
+        print(val_results)
 
-            model = GridSearchCV(RFR(), tuning_params, cv=cfg.FINE_TUNING.CV,
-                                 scoring=score_type, refit=list(score_type.keys())[0],
-                                 n_jobs=cfg.FINE_TUNING.N_JOBS)
+        opt_index = np.argmax(val_results[1:])
+        best_val_model = model_list[1:][opt_index]
+        raw_feat_model = model_list[0]
+        
+        raw_feat_y_pred = raw_feat_model.predict(X_test_list[0])
+        raw_feat_test_result = pear_corr(y_test_list[0], raw_feat_y_pred)
 
-            model.fit(X_train_red, y_train)
-            y_pred = model.predict(X_test_red)
+        y_pred = best_val_model.predict(X_test_list[1:][opt_index])
+        test_result = pear_corr(y_test_list[1:][opt_index], y_pred)
 
-            test_results.append(pear_corr(y_pred, y_test))
-
-        print('Raw-feat regression: '+"{:.4f}".format(test_results[0]))
-        print('PCA-feat-reduction regression: '+"{:.4f}".format(max(test_results[1:])))
+        print('Val result -  raw: ',"{:.2f}".format(val_results[0]),' - pca: ',"{:.2f}".format(val_results[1:][opt_index]))
+        print('Raw-feat regression: '+"{:.2f}".format(raw_feat_test_result))
+        print('PCA-feat-reduction regression: '+"{:.2f}".format(test_result))
 
 
 def setup(detector):
@@ -131,9 +135,9 @@ def setup(detector):
     """
     cfg = get_cfg()
     if detector == 'rcnn':
-        cfg_path = root + '/lervup_algo/configs/rf_kmeans_ft_rcnn_cv5.yaml'
+        cfg_path = root + '/lervup_algo/configs/rcnn_rf_kmeans.yaml'
     elif detector == 'mobinet':
-        cfg_path = root + '/lervup_algo/configs/rf_kmeans_ft_mobi_cv5.yaml'
+        cfg_path = root + '/lervup_algo/configs/mobi_rf_kmeans.yaml'
     else:
         raise ValueError('Detector '+str(detector)+' not deployed yet.')
     cfg.merge_from_file(cfg_path)

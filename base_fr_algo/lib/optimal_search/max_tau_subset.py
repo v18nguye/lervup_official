@@ -1,5 +1,4 @@
 import math
-import tqdm
 import numpy as np
 from .correlation import corr
 
@@ -52,7 +51,7 @@ def tau_subset(users, gt_user_expo, detectors, corr_type, cfg):
     tau_fixes = list(np.linspace(-1, 1, 201))
     tau_fixes = [float("{:.2f}".format(tau)) for tau in tau_fixes]
     
-    for tau_fix in tqdm.tqdm(tau_fixes):
+    for tau_fix in tau_fixes:
         detector_subset = select_subset(detectors, tau_fix)
 
         tau_est = corr(users, gt_user_expo, detector_subset, corr_type, cfg)

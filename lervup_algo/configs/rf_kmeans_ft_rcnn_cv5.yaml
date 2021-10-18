@@ -1,9 +1,12 @@
 _BASE_: "BASE-RCNN.yaml"
 
 FINE_TUNING:
-  STATUS: True
-  CV: 5
+  STATUS: False
+  CV: 1
 
+OUTPUT:
+  DIR: 'out'
+  
 CLUSTEROR:
   K_MEANS:
     CLUSTERS: 4

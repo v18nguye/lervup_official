@@ -4,6 +4,9 @@ FINE_TUNING:
   STATUS: True
   CV: 5
 
+OUTPUT:
+  DIR: 'out'
+  
 CLUSTEROR:
   K_MEANS:
     CLUSTERS: 4

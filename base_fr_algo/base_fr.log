@@ -1,0 +1,304 @@
+Config './configs/mobi_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1f70>, 0.5948219928021596), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1dc0>, 0.5948219928021596), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1ee0>, 0.5948219928021596), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813edd910>, 0.5948219928021596), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1d60>, 0.5929807338100428), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1df0>, 0.594011031876883), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1bb0>, 0.5943021486117485), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1a00>, 0.5944394839612127), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813e6fb80>, 0.5907935474046289), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ef7df0>, 0.5931257443557406), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813e726a0>, 0.5937508101404052), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813e6f3d0>, 0.5940396692307209), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1af0>, 0.588274010089876), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1fa0>, 0.5921673569673818), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1c10>, 0.5931683041792035), (<lib.baseline.baseline.BaseFocalRating object at 0x7f4813ed1ca0>, 0.5936226793706281)]
+best val model score:  0.5948219928021596
+total time:  192.23548865318298
+Saved model !
+Best Val Corr: 0.5948
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/mobi_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30640>, 0.5597692147415332), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30670>, 0.5597692147415332), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30910>, 0.5597692147415332), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30a60>, 0.5597692147415332), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e33a00>, 0.5618983578129279), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30bb0>, 0.5607628780703784), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30cd0>, 0.5604171499976158), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30790>, 0.5602498881731067), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30520>, 0.5496014765545663), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e307c0>, 0.5617089722933549), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e9e5b0>, 0.5610448892271226), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30100>, 0.5607194541327982), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30280>, 0.5502722158886603), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e30d00>, 0.5488491206776931), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e300d0>, 0.5616526620206059), (<lib.baseline.baseline.BaseFocalRating object at 0x7fc375e303d0>, 0.5611780034236323)]
+best val model score:  0.5618983578129279
+total time:  194.63160610198975
+Saved model !
+Best Val Corr: 0.5619
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/mobi_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5813a0>, 0.45240564183893905), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3a00>, 0.45240564183893905), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3af0>, 0.45240564183893905), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5ef910>, 0.45240564183893905), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3df0>, 0.4510255888491652), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5818e0>, 0.45179295952201914), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa6490d0>, 0.45201243017933135), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3b20>, 0.4521162073401741), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3c40>, 0.44938074326097877), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3dc0>, 0.45111725278129167), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa584520>, 0.4515917100052055), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3f70>, 0.45181144254759004), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3e50>, 0.3733737456662247), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3f10>, 0.4503836781134223), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3bb0>, 0.45114490878800395), (<lib.baseline.baseline.BaseFocalRating object at 0x7f8cfa5e3e80>, 0.45149192944654387)]
+best val model score:  0.45240564183893905
+total time:  190.75644636154175
+Saved model !
+Best Val Corr: 0.4524
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/mobi_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787a30>, 0.7705257713359042), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787790>, 0.7705257713359042), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef7878e0>, 0.7705257713359042), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787250>, 0.7705257713359042), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef7f5280>, 0.7671106351131777), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef7e9cd0>, 0.7690207649725037), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787b50>, 0.769561250176075), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef7874f0>, 0.7698161938089714), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787610>, 0.7630533711930527), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787220>, 0.7673806159938208), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef7873a0>, 0.7685398300283637), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787f40>, 0.7690754476880781), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787ca0>, 0.758336739060306), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef78aa90>, 0.765603197105218), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787640>, 0.7674608922261712), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6aef787370>, 0.7683032748561014)]
+best val model score:  0.7705257713359042
+total time:  204.5348997116089
+Saved model !
+Best Val Corr: 0.7705
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/rcnn_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a8e0>, 0.40143029383034756), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608abb0>, 0.40143029383034756), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608acd0>, 0.40143029383034756), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff1760f8640>, 0.40143029383034756), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a0d0>, 0.4020218521571839), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608d580>, 0.40229823902995004), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a520>, 0.4024373989700676), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a670>, 0.4024497699915692), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a100>, 0.40206565931385113), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a3d0>, 0.40206032509099726), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a7c0>, 0.40222922597553373), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608aa30>, 0.4023053910510631), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608ad00>, 0.4032575005248167), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a910>, 0.4023492604760538), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608a4f0>, 0.40207165830684866), (<lib.baseline.baseline.BaseFocalRating object at 0x7ff17608ae20>, 0.4021948363066972)]
+best val model score:  0.4032575005248167
+total time:  326.6846568584442
+Saved model !
+Best Val Corr: 0.4033
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/rcnn_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc83bc490>, 0.5395435624327565), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e370>, 0.5395435624327565), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc8351550>, 0.5395435624327565), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834ea30>, 0.5395435624327565), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834ef40>, 0.5191147432511436), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e8b0>, 0.5400593463394802), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e250>, 0.5398825765874466), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e4c0>, 0.5397960358823076), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834ef70>, 0.5445938196053135), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e0d0>, 0.5190869656289445), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834ea00>, 0.540205567268838), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e790>, 0.5400396705321033), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834ee20>, 0.5197750670940932), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834eca0>, 0.5192525330174729), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834edf0>, 0.5409700189249307), (<lib.baseline.baseline.BaseFocalRating object at 0x7f6dc834e100>, 0.540274588034376)]
+best val model score:  0.5445938196053135
+total time:  325.21135997772217
+Saved model !
+Best Val Corr: 0.5446
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/rcnn_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed36a0>, 0.35779103375221943), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0cd0>, 0.35779103375221943), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066f3e370>, 0.35779103375221943), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0bb0>, 0.35779103375221943), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0f70>, 0.33157451568419694), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0790>, 0.3324265222597704), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066f3e460>, 0.33267773645199966), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0d00>, 0.33279806533081446), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed07c0>, 0.3312484944379912), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0a30>, 0.33167658225180485), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0520>, 0.33219999437431486), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0640>, 0.3324476693047943), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0e20>, 0.3523207228393154), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0a60>, 0.33089233008082497), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed0b80>, 0.33170723499116067), (<lib.baseline.baseline.BaseFocalRating object at 0x7fe066ed04f0>, 0.3320888966572726)]
+best val model score:  0.35779103375221943
+total time:  324.4420413970947
+Saved model !
+Best Val Corr: 0.3578
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+Config './configs/rcnn_BL.yaml' has no VERSION. Assuming it to be compatible with latest v1.
+[(<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b100>, 0.7768745084186927), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b250>, 0.7768745084186927), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96ba30>, 0.7768745084186927), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96be20>, 0.7768745084186927), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b760>, 0.7767541717369024), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96eaf0>, 0.7768545289874628), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96bf70>, 0.776868472880192), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96bcd0>, 0.7768725212800267), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96bdf0>, 0.7763269555730103), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb9d9640>, 0.7767689109017683), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96bb80>, 0.7768346618223645), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b640>, 0.7768552815159453), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b8e0>, 0.7755991305092793), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96bf40>, 0.7766180564770694), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b3a0>, 0.7767731677717506), (<lib.baseline.baseline.BaseFocalRating object at 0x7f66eb96b790>, 0.7768228231988845)]
+best val model score:  0.7768745084186927
+total time:  328.386780500412
+Saved model !
+Best Val Corr: 0.7769
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())
+/home/khoanguyen/.conda/envs/lervup/lib/python3.8/site-packages/scipy/stats/stats.py:3845: PearsonRConstantInputWarning: An input array is constant; the correlation coefficent is not defined.
+  warnings.warn(PearsonRConstantInputWarning())

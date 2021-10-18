@@ -8,9 +8,9 @@ DETECTOR:
 
 ##
 USER_SELECTOR:
-  STATE: True
+  STATE: False
   EPS: 0.05
-  KEEP: 0.9
+  KEEP: 1.0
 
 ##
 SOLVER:
@@ -19,7 +19,7 @@ SOLVER:
   FEATURE_TYPE: 'ORG'
   CORR_TYPE: 'PEARSON'
   FILTERING: True
-  FILT: 0.1
+  FILT: 0.05
 
 ##
 FE:
@@ -32,11 +32,10 @@ FE:
 ##
 PCA:
   STATE: False
-  N_COMPONENTS: 6
 
 ##
 DATASETS:
-  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_test_split_mobinet_v1.json"
+  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_val_test_split_mobinet_v2.json"
   GT_USER_EXPOS: "dataset/lervup_data/gt_usr_exposure_v1.json"
   VIS_CONCEPTS: "dataset/lervup_data/visual_concepts/"
   PRE_VIS_CONCEPTS:  "base_algo/base_opt/out/mobi_optimal_thres_situs_v1.txt"

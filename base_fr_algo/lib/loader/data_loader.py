@@ -21,9 +21,10 @@ def load_train_test(path):
     """
     train_test_info = json.load(open(os.path.join(path)))
     test_data = train_test_info['test']
-    train_data = train_test_info['train']
+    train_data = train_test_info['train']['100']
+    val_data = train_test_info['val']
 
-    return train_data, test_data
+    return train_data, val_data, test_data
 
 
 def load_gt_user_expo(path):

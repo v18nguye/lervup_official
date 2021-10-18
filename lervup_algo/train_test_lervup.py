@@ -3,23 +3,31 @@ The module trains user's exposure predictors using the proposed lervup algo.
 
 run with default settings:
 
-    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name mobi_bank.pkl --situation BANK --verbose True
-    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name mobi_accom.pkl --situation ACCOM --verbose True
-    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name rcnn_it.pkl --situation IT --verbose True
-    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name rcnn_wait.pkl --situation WAIT --verbose True
+    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name it_mobi.pkl --situation IT --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name accom_mobi.pkl --situation ACCOM --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name bank_mobi.pkl --situation BANK --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/mobi_rf_kmeans.yaml --model_name wait_mobi.pkl --situation WAIT --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+
+    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name it_rcnn.pkl --situation IT --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name accom_rcnn.pkl --situation ACCOM --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name bank_rcnn.pkl --situation BANK --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+    python train_test_lervup.py --config_file ./configs/rcnn_rf_kmeans.yaml --model_name wait_rcnn.pkl --situation WAIT --N -1 --fr 0 --opts OUTPUT.DIR ./lervup/no_fr/
+
 
 run with more customized settings:
 
-    python3 train_test_lervup.py --config_file ./configs/rf_kmeans_ft_mobi_cv5.yaml --model_name it_mobi.pkl --situation IT --N 200 --opts FE.MODE OBJECT  FE.K 10  FE.GAMMA 2  DETECTOR.LOAD True SOLVER.PFT ORG OUTPUT.DIR ./mobinet_models/
+    python3 train_test_lervup.py --config_file ./configs/rf_kmeans_ft_mobi_cv5.yaml --model_name it_mobi.pkl --situation IT --N -1 --opts FE.MODE OBJECT  FE.K 10  FE.GAMMA 2  DETECTOR.LOAD True SOLVER.PFT ORG OUTPUT.DIR ./mobinet_models/
 
 The VISPEL module stands for VISual Photo Exposure Learning.
 """
 import os
 import sys
+import time
 sys.path.append('./lib/')
 sys.path.append('./vispel/')
 import argparse
 import pickle
+from tools.ftune_hprams import ftune_model_hyp
 from lib.situ.acronym import situ_decoding
 from vispel.config import get_cfg
 from vispel.vispel import VISPEL 
@@ -36,10 +44,11 @@ def argument_parser():
     parser.add_argument("--config_file", default="", metavar="FILE", help="path to config file")
     parser.add_argument("--model_name", required=True, help="saved modeling name")
     parser.add_argument("--situation", required=True, help="IT, ACCOM, BANK, WAIT")
-    parser.add_argument("--N", default=-1, type= int, help="Number of training profiles: "
+    parser.add_argument("--fr", required=True, type = int, help="if use Focal Rating ( > 0 is True)")
+    parser.add_argument("--N", default=-1, type = int, help="Number of training profiles: "
                                                    "-1: ALL user profiles"
-                                                   "N: N profiles (N < 400)")
-    parser.add_argument("--verbose", default=True, type=bool, help="IT, ACCOM, BANK, WAIT")
+                                                   "N: N profiles [-1, 175]")
+    parser.add_argument("--verbose", default=0)
     parser.add_argument(
         "--opts",
         help="Modify config options using the command-line 'KEY VALUE' pairs",
@@ -70,14 +79,16 @@ def setup(args):
     """
     cfg = get_cfg()
     cfg.merge_from_file(args.config_file)
-    if args.verbose == True:
+    if int(args.verbose) == 0:
+        cfg.OUTPUT.VERBOSE = False
+    else:
         cfg.OUTPUT.VERBOSE = True
     cfg.merge_from_list(args.opts)
 
     return cfg
 
 
-def train_test():
+def train_val():
     """
 
     :return:
@@ -85,15 +96,18 @@ def train_test():
 
     args = argument_parser().parse_args()
     cfg = setup(args)
+    print(args.model_name)
+    start = time.time()
+    model = VISPEL(situ_decoding(args.situation), args.N)
+    trained_model, val_score = ftune_model_hyp(model, cfg, args)
 
-    model = VISPEL(cfg, situ_decoding(args.situation), args.N)
-    model.train_vispel()
-    model.test_vispel()
+    print('total time: ', time.time() - start)
 
     if cfg.OUTPUT.VERBOSE:
         print("Saved model !")
 
-    save_model(model, args.model_name, cfg.OUTPUT.DIR)
+    save_model(trained_model, args.model_name, cfg.OUTPUT.DIR)
+    print('\n\n\n')
 
 if __name__ == '__main__':
-    train_test()
+    train_val()

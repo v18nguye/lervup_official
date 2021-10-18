@@ -22,7 +22,7 @@ def base_opt(data, corr_type, sav_path, detector):
         save path
 
     """
-    train_uids, val_uids = data['train_user_ids'], data['val_user_ids']
+    train_uids, test_uids = data['train_user_ids'], data['test_user_ids']
     obj_situs = data['visual_concept_scores']
     gt_uexpo_situs = data['gt_user_exposure_scores']
     
@@ -58,5 +58,5 @@ def base_opt(data, corr_type, sav_path, detector):
     print("#-----------------------------------#")
     for situ, gt_uexpo in gt_uexpo_situs.items():
         active_dets = est_opt_det_situs[situ]
-        corr_situ = corr(val_uids, gt_uexpo, active_dets, corr_type, test_mode= True)
-        print(situ+' corr: ', "{:.4f}".format(corr_situ))
+        corr_situ = corr(test_uids, gt_uexpo, active_dets, corr_type, test_mode= True)
+        print(situ+' corr: ', "{:.2f}".format(corr_situ))

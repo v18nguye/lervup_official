@@ -1,4 +1,6 @@
 import os
+import numpy as np
+import random
 from loader.loader import bloader
 from situ.acronym import situ_decoding
 from optimal_search.correlation import corr
@@ -12,16 +14,25 @@ class BaseFocalRating(object):
 
     """
 
-    def __init__(self, cfg, situ, save_file):
-        self.cfg = cfg
+    def __init__(self, situ, save_file):
         self.opt_thresholds = {}  # optimal threshold for each visual concept
         self.opt_detectors = {}  # selected detectors within its optimal thresholds
-        self.test_result = 0.0
         self.save_file = save_file
         self.situ = situ_decoding(situ)
         self.root = os.getcwd().split('/base_fr_algo')[0]
+
+    def load_cfg(self, cfg):
+        """Load model's configuration and its data
+        
+        """
+        self.cfg = cfg
+        self.set_seeds()
         self.save_path = os.path.join(self.cfg.OUTPUT.DIR, self.save_file.split('.pkl')[0] + '.txt')
-        self.x_train, self.x_test, self.detectors, self.gt_expos = bloader(self.root, self.cfg, self.situ)
+        self.x_train, self.x_val, self.x_test, self.detectors, self.gt_expos = bloader(self.root, self.cfg, self.situ)
+
+    def set_seeds(self):
+        random.seed(self.cfg.MODEL.SEED)
+        np.random.seed(self.cfg.MODEL.SEED)
 
     def train(self):
         # optimal threshold for each vis concept
@@ -37,22 +48,10 @@ class BaseFocalRating(object):
 
         else:
             _, opt_detectors, _, _ = tau_subset(self.x_train, self.gt_expos,
-                                                        self.opt_thresholds, self.cfg.SOLVER.CORR_TYPE, self.cfg)
+                                                    self.opt_thresholds, self.cfg.SOLVER.CORR_TYPE, self.cfg)
             self.opt_detectors = opt_detectors
 
-    def test(self):
-        self.test_result = corr(self.x_test, self.gt_expos,
-                                self.opt_detectors, self.cfg.SOLVER.CORR_TYPE, self.cfg, test_mode=True)
-
-    def optimize(self):
-        self.train()
-        self.test()
-
-
-class BASELINE(BaseFocalRating):
-    """A wrapper for testing 
-    the pre-trained models.
-    
-    """
-    def __init__(self) -> None:
-        super().__init__()
+    def test(self, test_set):
+        result = corr(test_set, self.gt_expos,
+                            self.opt_detectors, self.cfg.SOLVER.CORR_TYPE, self.cfg, test_mode=True)
+        return result

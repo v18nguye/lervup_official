@@ -8,35 +8,34 @@ DETECTOR:
 
 ##
 USER_SELECTOR:
-  STATE: True
-  EPS: 0.2
-  KEEP: 0.95
+  STATE: False
+  EPS: 0.05
+  KEEP: 1.0
 
 ##
 SOLVER:
-  F_TOP: 0.2
+  F_TOP: 0.1 # if not use load_detector (False) -> use this threshold for a detector be active
   PFT: 'POOLING'
-  FEATURE_TYPE: 'VOTE'
+  FEATURE_TYPE: 'ORG'
   CORR_TYPE: 'PEARSON'
   FILTERING: True
-  FILT: 0.1
+  FILT: 0.05
 
 ##
 FE:
   GAMMA: 0
   K: 10
-  TAU_e: 10.0
-  TAU_o: 0.66
-  TAU_i: 0.01
+  TAU_e: 10.0 # absolute lower threhold for a concept to be considered as high (extreme) impact concept (Tau_e = 10 -> always applying FR)
+  TAU_o: 0.66 # ratio between extrem / total concepts (score < the ratio -> FRating)
+  TAU_i: 0.01 # 
 
 ##
 PCA:
   STATE: False
-  N_COMPONENTS: 6
 
 ##
 DATASETS:
-  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_test_split_rcnn_v1.json"
+  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_val_test_split_rcnn_v2.json"
   GT_USER_EXPOS: "dataset/lervup_data/gt_usr_exposure_v1.json"
   VIS_CONCEPTS: "dataset/lervup_data/visual_concepts/"
   PRE_VIS_CONCEPTS: "base_algo/base_opt/out/rcnn_optimal_thres_situs_v1.txt"

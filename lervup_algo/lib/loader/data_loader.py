@@ -23,8 +23,9 @@ def train_test(root, path):
     train_test_info = json.load(open(os.path.join(root, path)))
     test_data = train_test_info['test']
     train_data = train_test_info['train']
+    val_set = train_test_info['val']
 
-    return train_data, test_data
+    return train_data, val_set, test_data
 
 
 def gt_user_expos(root, path):

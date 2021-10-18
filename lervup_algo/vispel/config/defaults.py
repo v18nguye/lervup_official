@@ -64,10 +64,10 @@ _C.USER_SELECTOR.STATE = False
 # Absolute visual score difference between two users. If two
 # users have the score difference smaller than EPS, they will
 # take into account to calculate the feature distance
-_C.USER_SELECTOR.EPS = 0.1
+_C.USER_SELECTOR.EPS = 0.05
 # Percentage of kept users
 # following their ranked feature distance
-_C.USER_SELECTOR.KEEP = 0.8
+_C.USER_SELECTOR.KEEP = 1.0
 
 # -----------------------------------------------------------------------------
 # DATASETS

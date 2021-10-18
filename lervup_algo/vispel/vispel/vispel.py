@@ -19,20 +19,25 @@ class VISPEL(object):
 
     """
 
-    def __init__(self, cfg, situation, N=-1):
-        self.cfg = cfg
+    def __init__(self, situation, N=-1):
         self.N = N
         self.root = abspath(__file__).split('/lervup_algo/vispel')[0]
         self.situation = situation
         self.situ_encoding = load_acronym(situation)
-        self.X_train, self.X_test, self.X_community, \
-        self.gt_expos, self.vis_concepts, \
-        self.detectors, self.opt_threds = data_loader(self.root, self.cfg, self.situation, self.N)
         self.clusteror = None
         self.regressor = None
         self.feature_selector = None
-        self.test_result = None
+
+    def load_cfg(self, cfg):
+        """Load model's configuration and its data
+        
+        """
+        self.cfg = cfg
         self.set_seeds()
+        self.X_train, self.X_val, self.X_test, self.X_community, \
+        self.gt_expos, self.vis_concepts, \
+        self.detectors, self.opt_threds = data_loader(self.root, self.cfg, self.situation, self.N)
+
 
     def set_seeds(self):
         random.seed(self.cfg.MODEL.SEED)
@@ -62,8 +67,12 @@ class VISPEL(object):
         self.regressor = trained_regressor
         self.feature_selector = feature_selector
 
-    def test_vispel(self, half_vis=False, load_half_vis = False):
+
+    def test_vispel(self, test_set, half_vis=False, load_half_vis = False):
         """
+
+        :param test_set: dict
+            data to test a trained model
 
         :param half_vis: boolean
             take into account a half of number visual concepts
@@ -101,7 +110,7 @@ class VISPEL(object):
             self.sel_opt_threds = self.opt_threds
 
 
-        test_expo_features = community_expo(self.X_test, self.cfg.SOLVER.F_TOP,\
+        test_expo_features = community_expo(test_set, self.cfg.SOLVER.F_TOP,\
                                             self.sel_detectors, self.sel_opt_threds, self.cfg.DETECTOR.LOAD,
                                             self.cfg)
 
@@ -121,4 +130,4 @@ class VISPEL(object):
         corr_score = test_regressor(self.regressor, self.situation,
                                     X_test_rd, gt_test_expos, pca_variance, self.cfg)
 
-        self.test_result = corr_score
+        return corr_score

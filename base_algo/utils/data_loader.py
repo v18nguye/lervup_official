@@ -1,7 +1,7 @@
 import os
 import json
 
-def load_train_test(path, load_txt = False):
+def load_train_test(path):
     """Load pre-processed data
 
     :param root: string
@@ -24,40 +24,9 @@ def load_train_test(path, load_txt = False):
     """
     train_test_info = json.load(open(path))
     test_data = train_test_info['test']
-    train_data = train_test_info['train']
-
-    if load_txt:
-        redefine_train = {}
-        redefine_test = {}
-        train_list = []
-        test_list =[]
-
-        with open('gt_users_val.txt') as fp:
-            lines = fp.readlines()
-            for line in lines:
-                train_list.append(line.split('\n')[0])
-
-        with open('gt_users_test.txt') as fp1:
-            lines = fp1.readlines()
-            for line in lines:
-                test_list.append(line.split('\n')[0])
-
-        for user, photos in train_data['100'].items():
-            if user in train_list:
-                redefine_train[user] = photos
-            elif user in test_list:
-                redefine_test[user] = photos
-
-        for user, photos in test_data.items():
-            if user in train_list:
-                redefine_train[user] = photos
-            elif user in test_list:
-                redefine_test[user] = photos
-
-        train_data = redefine_train
-        print('Number of reselected users in the train set: ', len(list(train_data.keys())))
-        test_data = redefine_test
-        print('Number of reselected users in the test set: ', len(list(test_data.keys())))
+    train_data_ = train_test_info['train']['100']
+    val_data_ = train_test_info['val']
+    train_data = {**train_data_, **val_data_}
 
     return train_data, test_data
 

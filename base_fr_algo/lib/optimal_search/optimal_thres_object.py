@@ -1,5 +1,4 @@
 import math
-import tqdm
 import numpy as np
 from .correlation import corr
 
@@ -61,7 +60,7 @@ def search_optimal_thres(train_data, gt_user_expo, detectors, corr_type, cfg):
     """
     max_tau_detectors = {}
 
-    for detector, score in tqdm.tqdm(detectors.items()):
+    for detector, score in detectors.items():
         detector_score = [detector,score]
         tau_max, threshold_max = search_thres(train_data, gt_user_expo, detector_score, corr_type, cfg)
         max_tau_detectors[detector] = (tau_max, threshold_max, score)

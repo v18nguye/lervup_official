@@ -2,7 +2,7 @@
 This module loads a trained model and reproduces its results
 
 Use:
-    python test_basefr.py --model_path ../pretrained_models/base_fr/mobinet/accom_mobi.pkl --print 1
+    python test_basefr.py --model_path ./base_fr/mobinet/bank_mobi.pkl --print 1
                          
 """
 import sys
@@ -42,9 +42,7 @@ def test(model_path, print_ = True):
         print('#-----------------------------------#')
         print('# TEST CORR')
         print("#-----------------------------------#")
-        print("{:.4f}".format(model.test_result))
-
-    return model.test_result
+        print("{:.4f}".format(model.test(model.x_val)))
 
 
 if __name__ == '__main__':
