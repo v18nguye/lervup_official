@@ -36,4 +36,4 @@ def base(data, corr_type, sav_path, detector):
         for det, score in obj_dets.items():
             detectors[det] = (opt_thres, score)
         corr_situ = corr(val_uids, gt_uexpo, detectors, corr_type)
-        print(situ+' corr: ', "{:.4f}".format(corr_situ))
+        print(situ+' corr: ', "{:.2f}".format(corr_situ))

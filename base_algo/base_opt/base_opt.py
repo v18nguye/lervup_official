@@ -59,4 +59,4 @@ def base_opt(data, corr_type, sav_path, detector):
     for situ, gt_uexpo in gt_uexpo_situs.items():
         active_dets = est_opt_det_situs[situ]
         corr_situ = corr(val_uids, gt_uexpo, active_dets, corr_type, test_mode= True)
-        print(situ+' corr: ', "{:.4f}".format(corr_situ))
+        print(situ+' corr: ', "{:.2f}".format(corr_situ))

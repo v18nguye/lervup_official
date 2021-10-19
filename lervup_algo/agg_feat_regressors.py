@@ -118,8 +118,8 @@ def regress(cfg, detector):
 
             test_results.append(pear_corr(y_pred, y_test))
 
-        print('Raw-feat regression: '+"{:.4f}".format(test_results[0]))
-        print('PCA-feat-reduction regression: '+"{:.4f}".format(max(test_results[1:])))
+        print('Raw-feat regression: '+"{:.2f}".format(test_results[0]))
+        print('PCA-feat-reduction regression: '+"{:.2f}".format(max(test_results[1:])))
 
 
 def setup(detector):

@@ -25,5 +25,6 @@ def run_basefr():
         print('*************')
         print('* '+mpath.split('/')[-1].split('.')[0])
         print('*************')
-        print('test corr: '+"{:.4f}".format(model.test_result))
+        print('test corr: '+"{:.2f}".format(model.test_result))
+        print(' \n\n')
     sys.path.remove('./base_fr_algo/lib')

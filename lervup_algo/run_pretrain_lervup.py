@@ -71,7 +71,7 @@ def run_lervup(setting):
         print('*************')
         print('* '+pair)
         print('*************')
-        print('test corr: '+"{:.4f}".format(np.mean(results)))
+        print('test corr: '+"{:.2f}".format(np.mean(results)))
         print('\n')
 
     sys.path.remove('./lervup_algo/lib')
