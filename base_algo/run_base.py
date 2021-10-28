@@ -22,12 +22,12 @@ def run_base(detector):
     situation_file = root+'/dataset/lervup_data/visual_concepts/'
 
     if detector == 'rcnn':
-        sav_path = root+'/base_algo/base/out/rcnn_common_optimal_thres_situs_v2.txt'
-        train_test_path = root+'/dataset/lervup_data/train_val_test_split_rcnn_v2.json'
+        sav_path = root+'/base_algo/base/out/rcnn_common_optimal_thres_situs_v3.txt'
+        train_test_path = root+'/dataset/lervup_data/train_val_test_split_rcnn_v3.json'
     
     elif detector == 'mobinet':
-        sav_path = root+'/base_algo/base/out/mobi_common_optimal_thres_situs_v2.txt'
-        train_test_path = root+'/dataset/lervup_data/train_val_test_split_mobinet_v2.json'
+        sav_path = root+'/base_algo/base/out/mobi_common_optimal_thres_situs_v3.txt'
+        train_test_path = root+'/dataset/lervup_data/train_val_test_split_mobinet_v3.json'
 
     else:
         raise ValueError('Detector' + detector + ' not deployed yet !')

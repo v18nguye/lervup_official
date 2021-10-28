@@ -10,7 +10,7 @@ import copy
 import numpy as np
 from sklearn.decomposition import PCA
 
-from .tools.ftune_agg_reg import ftune_rf
+from .tools.ftune_agg_reg import ftune_rf, ftune_rf_cv
 from .vispel.config import get_cfg
 from .lib.detectors.activator import activator
 from .lib.corr.corr_type import pear_corr
@@ -24,15 +24,19 @@ def _loader(detector):
     concept_path = "dataset/lervup_data/visual_concepts/"
 
     if detector == 'mobinet':
-        data_path = "dataset/lervup_data/train_val_test_split_mobinet_v2.json"
-        opt_thresh_path = "base_algo/base_opt/out/mobi_optimal_thres_situs_v2.txt"
+        data_path = "dataset/lervup_data/train_val_test_split_mobinet_v3.json"
+        opt_thresh_path = "base_algo/base_opt/out/mobi_optimal_thres_situs_v3.txt"
     
     elif detector == 'rcnn':
-        data_path = "dataset/lervup_data/train_val_test_split_rcnn_v2.json"
-        opt_thresh_path = "base_algo/base_opt/out/rcnn_optimal_thres_situs_v2.txt"
+        data_path = "dataset/lervup_data/train_val_test_split_rcnn_v3.json"
+        opt_thresh_path = "base_algo/base_opt/out/rcnn_optimal_thres_situs_v3.txt"
 
     opt_thresh_path = os.path.join(root, opt_thresh_path)
-    data_train, data_val, data_test = train_test(root, data_path)
+
+    data_train_, data_val_, test_data = train_test(root, data_path)
+    train_data = {**data_train_['100'], **data_val_}
+    val_data = {**data_train_['100'], **data_val_}
+
     gt_expo = gt_user_expos(root, gt_expo_path)
     raw_concepts = vis_concepts(root, concept_path)
     ord_concept = {}  # viual concept ordering
@@ -43,7 +47,7 @@ def _loader(detector):
             count += 1
         break
     
-    return data_train['100'], data_val, data_test, gt_expo, raw_concepts, ord_concept, opt_thresh_path
+    return train_data, val_data, test_data, gt_expo, raw_concepts, ord_concept, opt_thresh_path
 
 
 def _features(data, gt_expo, situ, ord_concept, concepts, opt_thresh_path):
@@ -103,7 +107,7 @@ def regress(cfg, detector):
                 X_val_red = pca.transform(X_val)
                 X_test_red = pca.transform(X_test)
 
-            best_model, best_val = ftune_rf(cfg, X_train_red, X_val_red, y_train, y_val)
+            best_model, best_val = ftune_rf_cv(cfg, X_train_red, X_val_red, y_train, y_val)
             model_list.append(copy.deepcopy(best_model))
             val_results.append(best_val)
             X_test_list.append(X_test_red)

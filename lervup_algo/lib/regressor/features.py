@@ -47,10 +47,12 @@ def user_selector(reg_features, gt_expos, cfg):
     return sorted_reg_features, sorted_gt_expos
 
 
-def user_features(clusteror, user_expo_features, cfg):
+def user_features(clusteror, clus_transformer, user_expo_features, cfg):
     """
     Build user regression features
 
+    :param clus_transformer:
+        feature transformer for clustering (normalize, etc, ..)
     :param user_expo_features:
     :param cfg:
 
@@ -64,6 +66,7 @@ def user_features(clusteror, user_expo_features, cfg):
         # agg_features.append([abs(feature) for feature in expo_features])
 
     agg_features = np.asarray(agg_features)
+    agg_features = clus_transformer.transform(agg_features)
 
     if cfg.CLUSTEROR.TYPE == 'K_MEANS':
         photo_labels = clusteror.predict(agg_features)
@@ -76,29 +79,44 @@ def user_features(clusteror, user_expo_features, cfg):
                 if len(photo_indexes) > 0:
                     cluster_expo_features = agg_features[photo_indexes, :]
                     centroid = centroids[k, :]
-                    cluster_variance = LA.norm(cluster_expo_features, 'fro')
+                    mean_ = np.mean(cluster_expo_features, 0)
+                    distance = LA.norm(mean_ - centroid, ord=2)
+                    cluster_norms = np.var(cluster_expo_features, 0) # use variance instead of NORM as the old methode.
+                    # cluster_norms = LA.norm(cluster_expo_features, 'fro')
                 else:
                     centroid = np.zeros(centroids.shape[1]) # there are no photos belong
                                                             # to the current centroid k
-                    cluster_variance = 0
+                    cluster_norms =  np.zeros(centroids.shape[1])
+                    distance = 0
+                    # cluster_norms = 0
 
-                for x in list(centroid):
+                for x in list(cluster_norms):
                     reg_features.append(x)
-                reg_features.append(cluster_variance)
+                reg_features.append(distance)
+
+                # for x in list(centroid):
+                #     reg_features.append(x)
+                # reg_features.append(cluster_norms)
 
             elif cfg.REGRESSOR.FEATURES == 'FR2':
 
                 if len(photo_indexes) > 0:
                     cluster_expo_features = agg_features[photo_indexes, :]
                     centroid = np.mean(cluster_expo_features, 0)
-                    cluster_norms = LA.norm(cluster_expo_features, 'fro')
+                    cluster_norms = np.var(cluster_expo_features, 0) # use variance instead of NORM as the old methode.
+                    # cluster_norms = LA.norm(cluster_expo_features, 'fro')
                 else:
                     centroid = np.zeros(centroids.shape[1]) # there are no photos belong
                                                             # to the current centroid k
-                    cluster_norms = 0
-                for x in list(centroid):
+                    cluster_norms = np.zeros(centroids.shape[1])
+                    # cluster_norms = 0
+                for x, y in zip(list(centroid), list(cluster_norms)):
                     reg_features.append(x)
-                reg_features.append(cluster_norms)
+                    reg_features.append(y)
+
+                # for x, in list(centroid):
+                #     reg_features.append(x)
+                # reg_features.append(cluster_norms)
 
             elif cfg.REGRESSOR.FEATURES == 'FR3':
                 if len(photo_indexes) > 0:
@@ -148,18 +166,20 @@ def user_features(clusteror, user_expo_features, cfg):
                     reg_features.append(x)
                 reg_features.append(cluster_variance)
 
-
     return reg_features
 
 
-def build_features(clusteror, com_features, gt_situ_expos, cfg):
+def build_features(clusteror, clus_transformer, com_features, gt_situ_expos, cfg):
     """Build regression features for all users
         in the community.
 
-    com_features : dict
+    :param: com_features : dict
         community exposure features
         dict of all users in a given situation with their clusteror features
             {user1: {photo1:[transformed features], ...}, ...}
+
+    :param: clus_transformer:
+        feature transformer for clustering
 
     :param: clusteror: object
         trained clusteror on a given situation
@@ -187,7 +207,7 @@ def build_features(clusteror, com_features, gt_situ_expos, cfg):
 
     for user, user_expo_features in com_features.items():
         if user not in non_im_users:
-            regression_features.append(user_features(clusteror,\
+            regression_features.append(user_features(clusteror, clus_transformer,\
                                                      user_expo_features, cfg))
             regression_targets.append(gt_situ_expos[user])
 

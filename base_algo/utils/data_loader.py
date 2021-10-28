@@ -24,9 +24,8 @@ def load_train_test(path):
     """
     train_test_info = json.load(open(path))
     test_data = train_test_info['test']
-    train_data_ = train_test_info['train']['100']
-    val_data_ = train_test_info['val']
-    train_data = {**train_data_, **val_data_}
+    train_data = train_test_info['train']
+    val_data = train_test_info['val']
 
     return train_data, test_data
 

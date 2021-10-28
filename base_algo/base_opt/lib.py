@@ -223,12 +223,14 @@ def select_subset(detectors, tau_fix):
 
     """
     detector_subset = {}
+    detector_subset_save = {}
 
     for detector, tau_thres_score in detectors.items():
         if tau_thres_score[0] >= tau_fix or abs(tau_thres_score[2]) >= 1:
-            detector_subset[detector] = [tau_thres_score[1], tau_thres_score[2]]
-    
-    return detector_subset
+            detector_subset[detector] = [tau_thres_score[1], tau_thres_score[2]] ## ****** (threshold, score)
+            detector_subset_save[detector] = tau_thres_score
+
+    return detector_subset, detector_subset_save
 
 
 def tau_subset(users, gt_user_expo, detectors, corr_type):
@@ -252,12 +254,14 @@ def tau_subset(users, gt_user_expo, detectors, corr_type):
 
     """
     list_opt_detectors = []
+    list_opt_detectors_save = []
+
     list_tau_estimate = []
     tau_fixes = list(np.linspace(-1, 1, 201))
     tau_fixes = [float("{:.2f}".format(tau)) for tau in tau_fixes]
     
     for tau_fix in tqdm.tqdm(tau_fixes):
-        detector_subset = select_subset(detectors, tau_fix)
+        detector_subset, detector_subset_save = select_subset(detectors, tau_fix)
 
         tau_est = corr(users, gt_user_expo, detector_subset, corr_type)
 
@@ -265,9 +269,12 @@ def tau_subset(users, gt_user_expo, detectors, corr_type):
             tau_est = 0
         list_tau_estimate.append(tau_est)
         list_opt_detectors.append(detector_subset)
+        list_opt_detectors_save.append(detector_subset_save)
 
     tau_max = max(list_tau_estimate)
     opt_detectors = list_opt_detectors[np.argmax(list_tau_estimate)]
+    opt_detectors_save = list_opt_detectors_save[np.argmax(list_tau_estimate)]
+
     threshold = tau_fixes[np.argmax(list_tau_estimate)]
 
-    return tau_max, opt_detectors, list_tau_estimate, threshold
+    return tau_max, opt_detectors, opt_detectors_save, list_tau_estimate, threshold # attent to 'opt_detectors_save'

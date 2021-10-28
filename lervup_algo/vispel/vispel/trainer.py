@@ -40,10 +40,10 @@ def trainer(situ_name, X_train_set, X_community, gt_situ_expos, clusteror, regre
 
     # Build exposure features for  all user ids
     # by clustering their photo exposures
-    trained_clusteror = train_clusteror(situ_name, clusteror, commu_expo_features, cfg)
+    trained_clusteror, clus_transformer = train_clusteror(situ_name, clusteror, commu_expo_features, cfg)
 
     # Build regression features for user ids in the trained set
-    reg_train_features, gt_train_expos = build_features(trained_clusteror, train_expo_features, gt_situ_expos, cfg)
+    reg_train_features, gt_train_expos = build_features(trained_clusteror, clus_transformer, train_expo_features, gt_situ_expos, cfg)
 
     # Select pertinent users
     reg_train_features, gt_train_expos = user_selector(reg_train_features, gt_train_expos, cfg)
@@ -61,7 +61,7 @@ def trainer(situ_name, X_train_set, X_community, gt_situ_expos, clusteror, regre
         X_train_rd = reg_train_features
 
     # Fit to the regressor
-    trained_regressor = train_regressor(regressor, X_train_rd, gt_train_expos, cfg)
+    trained_regressor, reg_transformer = train_regressor(regressor, X_train_rd, gt_train_expos, cfg)
 
 
-    return trained_clusteror, trained_regressor, pca
+    return trained_clusteror, clus_transformer, trained_regressor, reg_transformer, pca

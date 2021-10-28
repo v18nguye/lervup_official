@@ -2,7 +2,7 @@
 This module loads a trained model and reproduces its results
 
 Use:
-    python test_trained_models.py --model_dir ./lervup/no_fr/ --print 1
+    python test_trained_models.py --model_dir ./lervup_v2/no_fr/ --print 1
                          
 """
 import sys

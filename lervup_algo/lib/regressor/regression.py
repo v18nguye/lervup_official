@@ -3,6 +3,7 @@ import numpy as np
 import scipy.stats as stats
 from corr.corr_type import pear_corr, kendall_corr
 from plotter.plotter import pca_plot
+from sklearn.preprocessing import StandardScaler, Normalizer, RobustScaler, MaxAbsScaler
 
 def train_regressor(model, x_train, y_train, cfg):
     """Train regressor by each situation
@@ -14,22 +15,28 @@ def train_regressor(model, x_train, y_train, cfg):
         training target
 
     :return:
-        trained modeling
+        trained model
 
+    : ref:
+        https://scikit-learn.org/stable/modules/preprocessing.html
     """
 
+    reg_transformer = RobustScaler().fit(x_train) # regression feature transformer
+    x_train_transform = reg_transformer.transform(x_train)
+
+
     if cfg.REGRESSOR.TYPE == 'RF':
-        model.fit(x_train, y_train)
+        model.fit(x_train_transform, y_train)
 
     if cfg.REGRESSOR.TYPE == 'SVM':
-        model.fit(x_train, y_train)
+        model.fit(x_train_transform, y_train)
 
     if cfg.OUTPUT.VERBOSE and cfg.FINE_TUNING.STATUS:
         print('Best fine_tuned parameters: ')
         print(model.best_params_)
 
 
-    y_pred = model.predict(x_train)
+    y_pred = model.predict(x_train_transform)
 
     if cfg.OUTPUT.VERBOSE:
 
@@ -39,30 +46,32 @@ def train_regressor(model, x_train, y_train, cfg):
         elif cfg.SOLVER.CORR_TYPE == 'PEARSON':
             print('correlation: ', "{:.4f}".format(pear_corr(y_pred, y_train)))
 
-    return model
+    return model, reg_transformer
 
 
-def test_regressor(model, situ_name, x_test, y_test, pca_var, cfg):
+def test_regressor(model, transformer, situ_name, x_test, y_test, pca_var, cfg):
     """Train regressor by each situation
 
-    :param: x_test: numpy array
+    :param transformer: 
+        feature transformer (normalization, standarlize, etc ..)
+
+    :param x_test: numpy array
         training data
 
-    :param: y_test: numpy array
+    :param y_test: numpy array
         training target
 
-    :return:
-        trained modeling
-
     """
+    x_test_transform = transformer.transform(x_test)
+
     if cfg.REGRESSOR.TYPE == 'RF':
-        y_pred = model.predict(x_test)
+        y_pred = model.predict(x_test_transform)
 
     if cfg.REGRESSOR.TYPE == 'SVM':
-        y_pred = model.predict(x_test)
+        y_pred = model.predict(x_test_transform)
 
     if cfg.PCA.STATE:
-        pca_plot(situ_name, x_test, y_test, y_pred, pca_var)
+        pca_plot(situ_name, x_test_transform, y_test, y_pred, pca_var)
 
     if cfg.SOLVER.CORR_TYPE == 'KENDALL':
         corr = kendall_corr(y_pred, y_test)

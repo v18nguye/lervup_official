@@ -29,17 +29,17 @@ def ftune_model_hyp(modelb, cfg, args):
     cfg_list = []
     nb_jobs = 0
 
-    SOLVER_FEATURE_TYPEs = ['VOTE', 'ORG']
-    DETECTOR_LOADs = [True, False]
+    SOLVER_FEATURE_TYPEs = ['ORG']
+    DETECTOR_LOADs = [True]
     F_TOPs = [0.1]
-    FILTs = [0.1]
+    FILTs = [0.05]
 
     if args.fr > 0: # use focal rating
         Ks = [10, 20]
         GAMMAs = [0, 1, 3]
         TAU_es= [0.7, 10]
         FE_MODEs = ['IMAGE', 'OBJECT']
-        PFT_MODEs = ['ORG', 'POOLING']
+        PFT_MODEs = ['ORG', 'POOLING', 'POOLINGx2']
 
     else:
         Ks = [10]
@@ -69,7 +69,7 @@ def ftune_model_hyp(modelb, cfg, args):
                                         nb_jobs += 1
                                         cfg_list.append(copy.deepcopy(cfg))
 
-    results = joblib.Parallel(n_jobs=10)(joblib.delayed(run_model)(copy.deepcopy(modelb), cfg_) for cfg_ in cfg_list)
+    results = joblib.Parallel(n_jobs=25)(joblib.delayed(run_model)(copy.deepcopy(modelb), cfg_) for cfg_ in cfg_list)
     print(results)
     opt_index = np.argmax([x[1] for x in results])
     best_model = results[opt_index][0]

@@ -1,1 +1,0 @@
-{"accommodation_search": 0.0, "bank_credit": 0.0, "job_search_IT": 0.67, "job_search_waiter_waitress": 0.0}

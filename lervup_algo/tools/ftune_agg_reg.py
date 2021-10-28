@@ -7,6 +7,9 @@ import copy
 import joblib
 from sklearn.ensemble import RandomForestRegressor as RFR
 from scipy import stats
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import make_scorer
+from sklearn.ensemble import RandomForestRegressor as RFR
 
 def pear_corr(y_true, y_pred):
     """Calculate pearson correlation
@@ -68,3 +71,42 @@ def ftune_rf(cfg,  X_train_red, X_val_red, y_train, y_val):
     rf_best_val_score = rf_results[rf_opt_index][1]
 
     return rf_best_model, rf_best_val_score
+
+
+def ftune_rf_cv(cfg, X_train_red, X_val_red, y_train, y_val):
+    """Random-Forest Cross-Val FineTunner
+
+    :param modelb: 
+        model base
+
+    :param cfg: CFG
+        configuration object.
+    """
+    cfg.REGRESSOR.RF.BOOTSTRAP = [ True, False]
+    cfg.REGRESSOR.RF.MAX_DEPTH = [7, 9]
+    cfg.REGRESSOR.RF.MAX_FEATURES = ['auto']
+    cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF = [2]
+    cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT = [2]
+    cfg.REGRESSOR.RF.N_ESTIMATORS = [150, 230]
+    cfg.FINE_TUNING.N_JOBS = 8
+
+    # cross-val model training.
+    score_type = {'PEARSON': make_scorer(pear_corr, greater_is_better=True)}
+
+    tuning_params = {'bootstrap': cfg.REGRESSOR.RF.BOOTSTRAP,
+                    'max_depth': cfg.REGRESSOR.RF.MAX_DEPTH,
+                    'max_features': cfg.REGRESSOR.RF.MAX_FEATURES,
+                    'min_samples_leaf': cfg.REGRESSOR.RF.MIN_SAMPLES_LEAF,
+                    'min_samples_split': cfg.REGRESSOR.RF.MIN_SAMPLES_SPLIT,
+                    'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS,
+                    'random_state': [cfg.MODEL.SEED]}
+
+    modelb = GridSearchCV(RFR(), tuning_params, cv= cfg.FINE_TUNING.CV,
+                            scoring=score_type, refit=list(score_type.keys())[0],
+                            n_jobs= cfg.FINE_TUNING.N_JOBS)
+
+    modelb.fit(X_train_red, y_train)
+    y_val_pred = modelb.predict(X_val_red)
+    val_result = pear_corr(y_val, y_val_pred)
+
+    return modelb, val_result

@@ -27,7 +27,7 @@ FE:
   K: 10
   TAU_e: 10.0 # absolute lower threhold for a concept to be considered as high (extreme) impact concept (Tau_e = 10 -> always applying FR)
   TAU_o: 0.66 # ratio between extrem / total concepts (score < the ratio -> FRating)
-  TAU_i: 0.01 # 
+  TAU_i: 0.5 # only scale when image's objectness is sufficiently high
 
 ##
 PCA:
@@ -35,10 +35,10 @@ PCA:
 
 ##
 DATASETS:
-  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_val_test_split_rcnn_v2.json"
+  TRAIN_TEST_SPLIT: "dataset/lervup_data/train_val_test_split_rcnn_v3.json"
   GT_USER_EXPOS: "dataset/lervup_data/gt_usr_exposure_v1.json"
   VIS_CONCEPTS: "dataset/lervup_data/visual_concepts/"
-  PRE_VIS_CONCEPTS: "base_algo/base_opt/out/rcnn_optimal_thres_situs_v1.txt"
+  PRE_VIS_CONCEPTS: "base_algo/base_opt/out/rcnn_optimal_thres_situs_v3_active.txt"
 
 ##
 OUTPUT:

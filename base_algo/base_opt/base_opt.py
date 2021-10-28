@@ -33,7 +33,7 @@ def base_opt(data, corr_type, sav_path, detector):
         for situ, obj_dets in obj_situs.items():
             print(' ',situ)
             gt_uexpo = gt_uexpo_situs[situ]
-            opt_thres_situs[situ] = search_optimal_thres(train_uids, gt_uexpo, obj_dets, corr_type)
+            opt_thres_situs[situ] = search_optimal_thres(train_uids, gt_uexpo, obj_dets, corr_type) 
         with open(sav_path, 'w') as fp:
             json.dump(opt_thres_situs, fp)
     else:
@@ -44,14 +44,22 @@ def base_opt(data, corr_type, sav_path, detector):
     print('Estimating corr max, and opt detectors per situation ...')
     corr_max_situs = {}
     est_opt_det_situs = {} # estimate
+    est_opt_det_situs_save = {} # to save
     est_thres_situs = {}
     for situ, gt_uexpo in gt_uexpo_situs.items():
         print(' ',situ)
-        corr_max, opt_dets, _, opt_thres = tau_subset(train_uids, gt_uexpo, opt_thres_situs[situ], corr_type)
+        corr_max, opt_dets, opt_dets_save, _, opt_thres = tau_subset(train_uids, gt_uexpo, opt_thres_situs[situ], corr_type)
         corr_max_situs[situ] = corr_max
+        est_opt_det_situs_save[situ] = opt_dets_save 
         est_opt_det_situs[situ] = opt_dets
         est_thres_situs[situ] = opt_thres
     print('Done!')
+
+    # export ACTIVE detectors with associated objectness threshold, and correlation vis_concept: (tau, threshold, score)
+    print('Save active detectors !')
+    active_sav_path = sav_path.split('.txt')[0]+'_active.txt'
+    with open(active_sav_path, 'w') as fp:
+            json.dump(est_opt_det_situs_save, fp)
 
     print('#-----------------------------------#')
     print('# ' +detector.upper()+ ' TEST CORR')

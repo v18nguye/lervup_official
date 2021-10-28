@@ -1,4 +1,5 @@
 import os
+import copy
 from detectors.activator import activator
 from loader.data_loader import train_test, gt_user_expos, vis_concepts
 
@@ -10,39 +11,31 @@ def data_loader(root, cfg, situation, N=-1):
     """
 
     # Basic data-loader
-    X_mini_batches, X_val_set, X_test_set = train_test(root, cfg.DATASETS.TRAIN_TEST_SPLIT)
+    X_raw_train, X_val_set, X_test_set = train_test(root, cfg.DATASETS.TRAIN_TEST_SPLIT)
     expos = gt_user_expos(root, cfg.DATASETS.GT_USER_EXPOS)
     concepts = vis_concepts(root, cfg.DATASETS.VIS_CONCEPTS)
     X_community = {}
 
     # Build community data
 
-    for user, objects in X_mini_batches['100'].items():
+    for user, objects in X_raw_train.items():
         X_community[user] = objects
 
     for user, objects in X_test_set.items():
         X_community[user] = objects
 
     # select users for debug mode
-    if cfg.MODEL.DEBUG:
-        X_train_set = X_mini_batches['50']  # 30 % training users
+    if int(N) == -1: # use all
+        X_train_set = copy.deepcopy(X_raw_train)
     else:
-        if int(N) == -1:
-            X_train_set = X_mini_batches['100']
-
-        elif int(N) == 175:
-            X_train_set = X_mini_batches['50']
-        else:
-            # X_all = X_mini_batches['100']
-            # count = 0
-            # X_train_set = {}
-            # for user_, photos_ in X_all.items():
-            #     count += 1
-            #     if count <= int(N):
-            #         X_train_set[user_] = photos_
-            #     else:
-            #         break
-            raise ValueError('N is out of the options [-1, 175 (a half number of users)] !')
+        count = 0
+        X_train_set = {}
+        for user_, photos_ in X_raw_train.items():
+            count += 1
+            if count <= int(N):
+                X_train_set[user_] = photos_
+            else:
+                break
 
     situ_gt_expos = expos[situation]
     situ_vis_concepts = concepts[situation]

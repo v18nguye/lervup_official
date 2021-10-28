@@ -25,7 +25,9 @@ class VISPEL(object):
         self.situation = situation
         self.situ_encoding = load_acronym(situation)
         self.clusteror = None
+        self.clus_transformer = None
         self.regressor = None
+        self.reg_transformer = None ## feature transformer (normalize, etc) for regression
         self.feature_selector = None
 
     def load_cfg(self, cfg):
@@ -59,12 +61,14 @@ class VISPEL(object):
         regressor = regressor_builder(self.cfg)
 
         # Train ...
-        trained_clusteror, trained_regressor, feature_selector = trainer(self.situation, self.X_train, self.X_community, \
+        trained_clusteror, clus_transformer, trained_regressor, reg_transformer, feature_selector = trainer(self.situation, self.X_train, self.X_community, \
                                                                          self.gt_expos, clusteror, regressor,
                                                                          self.detectors, self.opt_threds, self.cfg)
 
         self.clusteror = trained_clusteror
+        self.clus_transformer = clus_transformer
         self.regressor = trained_regressor
+        self.reg_transformer = reg_transformer
         self.feature_selector = feature_selector
 
 
@@ -114,10 +118,10 @@ class VISPEL(object):
                                             self.sel_detectors, self.sel_opt_threds, self.cfg.DETECTOR.LOAD,
                                             self.cfg)
 
-        reg_test_features, gt_test_expos = build_features(self.clusteror, test_expo_features,
+        reg_test_features, gt_test_expos = build_features(self.clusteror, self.clus_transformer, test_expo_features,
                                                           self.gt_expos, self.cfg)
 
-        test_clusteror(self.situation, self.clusteror, test_expo_features, self.cfg)
+        # test_clusteror(self.situation, self.clusteror, test_expo_features, self.cfg)
 
         # Perform feature transform
         if self.cfg.PCA.STATE:
@@ -127,7 +131,7 @@ class VISPEL(object):
             X_test_rd = reg_test_features
             pca_variance = 0
 
-        corr_score = test_regressor(self.regressor, self.situation,
+        corr_score = test_regressor(self.regressor, self.reg_transformer, self.situation,
                                     X_test_rd, gt_test_expos, pca_variance, self.cfg)
 
         return corr_score
