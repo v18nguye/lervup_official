@@ -1,0 +1,46 @@
+MODEL:
+  DEBUG: False
+  PLOT: False
+
+##
+DETECTOR:
+  LOAD: True
+
+##
+USER_SELECTOR:
+  STATE: True
+  EPS: 0.2
+  KEEP: 0.95
+
+##
+SOLVER:
+  F_TOP: 0.2
+  PFT: 'POOLINGx2'
+  FEATURE_TYPE: 'ORG'
+  CORR_TYPE: 'PEARSON'
+  FILTERING: True
+  FILT: 0.1
+
+##
+FE:
+  GAMMA: 0
+  K: 10
+  TAU_e: 10.0
+  TAU_o: 0.66
+  TAU_i: 0.01
+
+##
+PCA:
+  STATE: False
+  N_COMPONENTS: 6
+
+##
+DATASETS:
+  TRAIN_TEST_SPLIT: ""
+  GT_USER_EXPOS: ""
+  VIS_CONCEPTS: ""
+  PRE_VIS_CONCEPTS: ""
+
+##
+OUTPUT:
+  VERBOSE: False

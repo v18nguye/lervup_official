@@ -1,0 +1,98 @@
+***********
+bank_credit
+***********
+correlation:  0.2684858748714206
+***********
+job_search_IT
+***********
+correlation:  0.36115897598266333
+***********
+accommodation_search
+***********
+correlation:  0.30358034530890726
+***********
+job_search_waiter_waitress
+***********
+correlation:  0.6057300022475247
+
+
+root = os.getcwd().split('/privacy/tools')[0]
+data_path = "process_raw_data/out/train_test_split_rcnn_v1.json"
+gt_expo_path = "process_raw_data/out/gt_usr_exposure_v1.json"
+concept_path = "process_raw_data/raw_data/visual_concepts/processed_situations"
+opt_thresh_path = "privacy_baseline/out/rcnn_optimal_thres_situs_v1.txt"
+
+###################
+
+
+root = os.getcwd().split('/privacy/tools')[0]
+data_path = "process_raw_data/out/train_test_split_mobinet_v1.json"
+gt_expo_path = "process_raw_data/out/gt_usr_exposure_v1.json"
+concept_path = "process_raw_data/raw_data/visual_concepts/processed_situations"
+opt_thresh_path = "privacy_baseline/out/mobinet_optimal_thres_situs_v1.txt"
+
+#####################
+
+MOBI
+***********
+bank_credit
+***********
+N= 282: 0.1827350242993643
+N= 16: 0.10308266791606994
+N= 8: 0.0966058938326653
+N= 4: 0.08049618626163894
+***********
+job_search_IT
+***********
+N= 282: 0.4514975573273309
+N= 16: 0.21793958514787048
+N= 8: 0.12915500263519442
+N= 4: 0.3332350442360508
+***********
+accommodation_search
+***********
+N= 282: 0.3546536647017473
+N= 16: 0.25513473305493045
+N= 8: 0.2503185414123758
+N= 4: 0.3244774834605472
+***********
+job_search_waiter_waitress
+***********
+N= 282: 0.48226250368264606
+N= 16: 0.6106972544608666
+N= 8: 0.5862949322541535
+N= 4: 0.6196818961779903
+
+####################
+RCNN
+
+***********
+bank_credit
+***********
+N= 282: 0.25042083975231944
+N= 16: 0.2926046342282926
+N= 8: 0.26600491232644063
+N= 4: 0.2383466443477405
+***********
+job_search_IT
+***********
+N= 282: 0.3700945027592765
+N= 16: 0.42563694151805637
+N= 8: 0.37305025949160964
+N= 4: 0.2771763020622164
+***********
+accommodation_search
+***********
+N= 282: 0.310679744894395
+N= 16: 0.47280356889035313
+N= 8: 0.38337912538299923
+N= 4: 0.38876651251091304
+***********
+job_search_waiter_waitress
+***********
+N= 282: 0.595952371754678
+N= 16: 0.5754944601393371
+N= 8: 0.5920654644946545
+N= 4: 0.5888813550200066
+
+
