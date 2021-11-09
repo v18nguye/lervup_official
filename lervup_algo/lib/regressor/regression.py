@@ -21,8 +21,8 @@ def train_regressor(model, x_train, y_train, cfg):
         https://scikit-learn.org/stable/modules/preprocessing.html
     """
 
-    reg_transformer = RobustScaler().fit(x_train) # regression feature transformer
-    x_train_transform = reg_transformer.transform(x_train)
+    reg_feat_transform = RobustScaler().fit(x_train) # regression feature transformer
+    x_train_transform = reg_feat_transform.transform(x_train)
 
 
     if cfg.REGRESSOR.TYPE == 'RF':
@@ -46,10 +46,10 @@ def train_regressor(model, x_train, y_train, cfg):
         elif cfg.SOLVER.CORR_TYPE == 'PEARSON':
             print('correlation: ', "{:.4f}".format(pear_corr(y_pred, y_train)))
 
-    return model, reg_transformer
+    return model, reg_feat_transform
 
 
-def test_regressor(model, transformer, situ_name, x_test, y_test, pca_var, cfg):
+def test_regressor(model, transformer, situ_name, x_test, y_test, cfg):
     """Train regressor by each situation
 
     :param transformer: 
@@ -69,9 +69,6 @@ def test_regressor(model, transformer, situ_name, x_test, y_test, pca_var, cfg):
 
     if cfg.REGRESSOR.TYPE == 'SVM':
         y_pred = model.predict(x_test_transform)
-
-    if cfg.PCA.STATE:
-        pca_plot(situ_name, x_test_transform, y_test, y_pred, pca_var)
 
     if cfg.SOLVER.CORR_TYPE == 'KENDALL':
         corr = kendall_corr(y_pred, y_test)

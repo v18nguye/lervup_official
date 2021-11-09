@@ -9,10 +9,9 @@ from corr.corr_type import pear_corr, kendall_corr
 
 def clusteror_builder(cfg):
     """
-    Build a K-means clusteror
+    Build a clusteror
 
     :return:
-
     """
     if cfg.CLUSTEROR.TYPE == 'K_MEANS':
         model = KMeans(n_clusters= cfg.CLUSTEROR.K_MEANS.CLUSTERS,\
@@ -39,7 +38,7 @@ def regressor_builder(cfg):
 
     """
 
-    if not cfg.FINE_TUNING.STATUS:
+    if not cfg.GRID_SEARCH.STATUS:
 
         if cfg.REGRESSOR.TYPE == 'SVM':
             model = SVR(kernel= cfg.REGRESSOR.SVM.KERNEL[0], C= cfg.REGRESSOR.SVM.C[0], 
@@ -64,9 +63,10 @@ def regressor_builder(cfg):
                                   'gamma': cfg.REGRESSOR.SVM.GAMMA,
                                   'C': cfg.REGRESSOR.SVM.C,
                                   'random_state': [cfg.MODEL.SEED]}
-            model = GridSearchCV(SVR(), tuning_params, cv = cfg.FINE_TUNING.CV,
+                                  
+            model = GridSearchCV(SVR(), tuning_params, cv = cfg.GRID_SEARCH.CV,
                                     scoring= score_type, refit=list(score_type.keys())[0],
-                                    n_jobs= cfg.FINE_TUNING.N_JOBS)
+                                    n_jobs= cfg.GRID_SEARCH.N_JOBS)
 
         if cfg.REGRESSOR.TYPE == 'RF':
             tuning_params = {'bootstrap': cfg.REGRESSOR.RF.BOOTSTRAP,
@@ -77,8 +77,8 @@ def regressor_builder(cfg):
                                 'n_estimators': cfg.REGRESSOR.RF.N_ESTIMATORS,
                                 'random_state': [cfg.MODEL.SEED]}
 
-            model = GridSearchCV(RFR(), tuning_params, cv= cfg.FINE_TUNING.CV,
+            model = GridSearchCV(RFR(), tuning_params, cv= cfg.GRID_SEARCH.CV,
                                     scoring=score_type, refit=list(score_type.keys())[0],
-                                    n_jobs= cfg.FINE_TUNING.N_JOBS)
+                                    n_jobs= cfg.GRID_SEARCH.N_JOBS)
 
     return model

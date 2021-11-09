@@ -1,0 +1,34 @@
+MODEL:
+  DEBUG: False
+
+##
+USER_SELECTOR:
+  STATE: True
+  EPS: 0.05
+  KEEP: 1.0
+
+##
+SOLVER:
+  F_TOP: 0.1 # if not use load_detector (False) -> use this threshold for a detector be active
+  FEATURE_TYPE: 'ORG'
+  CORR_TYPE: 'PEARSON'
+  FILTERING: True
+  FILT_THRESHOLD: 0.01
+
+##
+FE:
+  GAMMA: 0
+  K: 10
+  TAU_e: 1 # absolute lower threhold for a concept to be considered as high (extreme) impact concept (Tau_e = 10 -> always applying FR)
+  TAU_o: 0.33333 # ratio between extrem / total concepts (score < the ratio -> FRating)
+
+##
+PCA:
+  APPLY: False
+
+##
+DATASETS:
+  TRAIN_TEST_SPLIT: "dataset/iclef_data/train-val-test_detection_split_iclef.json"
+  GT_USER_EXPOS: "dataset/iclef_data/gt_trainvaltest_uexposure.json"
+  VIS_CONCEPTS: "dataset/iclef_data/visual_concepts/"
+  PRE_VIS_CONCEPTS: "base_algo/base_opt/out/iclef_optimal_thres_situs.txt"

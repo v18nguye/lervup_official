@@ -4,15 +4,19 @@
 import copy
 import joblib
 import numpy as np
-from .ftune_reg import ftune_rf, ftune_rf_cv
+from .ftune_reg import ftune_rf_cv
+from loader.data_loader import data_loader
 
-
-def run_model(modelb, cfg):
+def run_model(modelb, cfg, args):
     """run model training
     
     """
-    trained_model, val_score = ftune_rf_cv(modelb, cfg)
+    X_train, X_val, _, \
+        gt_expos, \
+        detectors, opt_threds = data_loader(cfg, modelb.situ_name)
 
+    trained_model, val_score = ftune_rf_cv(modelb, cfg, args, X_train, X_val, gt_expos, detectors, opt_threds)
+    
     return trained_model, val_score
 
 
@@ -27,53 +31,42 @@ def ftune_model_hyp(modelb, cfg, args):
 
     """
     cfg_list = []
-    nb_jobs = 0
 
-    SOLVER_FEATURE_TYPEs = ['ORG']
-    DETECTOR_LOADs = [True]
-    F_TOPs = [0.1]
-    FILTs = [0.05]
+    EPSs = [0.05, 0.1, 0.15]
+    KEEPs = [0.87,0.94, 1.0]
+    REGRESSOR_FEATURES = ['FR1', 'FR2']
+    DETECTOR_LOADs = [True, False]
+    Ks = [10, 15, 20]
+    GAMMAs = [0, 2, 4]
+    TAU_es = [0.8, 1, 1.333]
+    FE_MODEs = ['IMAGE', 'OBJECT']
+    CLUSTERs = [1, 2, 8]
 
-    if args.fr > 0: # use focal rating
-        Ks = [10, 20]
-        GAMMAs = [0, 1, 3]
-        TAU_es= [0.7, 10]
-        FE_MODEs = ['IMAGE', 'OBJECT']
-        PFT_MODEs = ['ORG', 'POOLING', 'POOLINGx2']
-
-    else:
-        Ks = [10]
-        GAMMAs = [0] # no scaling
-        TAU_es= [0] # no scaling
-        FE_MODEs = ['IMAGE']
-        PFT_MODEs = ['ORG']
-
-    for ftype in SOLVER_FEATURE_TYPEs:
-        cfg.SOLVER.FEATURE_TYPE = ftype
-        for fe_mode in FE_MODEs:
-            cfg.FE.MODE = fe_mode
-            for tau_e in TAU_es:
-                cfg.FE.TAU_e = tau_e
-                for mode in PFT_MODEs:
-                    cfg.SOLVER.PFT = mode
-                    for load in DETECTOR_LOADs:
-                        cfg.DETECTOR.LOAD = load
-                        for f_top in F_TOPs:
-                            cfg.SOLVER.F_TOP = f_top
+    for cluster in CLUSTERs:
+        cfg.CLUSTEROR.K_MEANS.CLUSTERS = cluster
+        for eps in EPSs:
+            cfg.USER_SELECTOR.EPS = eps
+            for keep in KEEPs:
+                cfg.USER_SELECTOR.KEEP = keep
+                for load in DETECTOR_LOADs:
+                    cfg.DETECTOR.LOAD = load
+                    for rfeat in REGRESSOR_FEATURES:
+                        cfg.REGRESSOR.FEATURES = rfeat
+                        for fe_mode in FE_MODEs:
+                            cfg.FE.MODE = fe_mode
                             for gamma in GAMMAs:
                                 cfg.FE.GAMMA = gamma
-                                for filt in FILTs:
-                                    cfg.SOLVER.FILT = filt
-                                    for k in Ks:
-                                        cfg.FE.K = k
-                                        nb_jobs += 1
+                                for k in Ks:
+                                    cfg.FE.K = k
+                                    for tau_e in TAU_es:
+                                        cfg.FE.TAU_e = tau_e
                                         cfg_list.append(copy.deepcopy(cfg))
 
-    results = joblib.Parallel(n_jobs=25)(joblib.delayed(run_model)(copy.deepcopy(modelb), cfg_) for cfg_ in cfg_list)
-    print(results)
+    results = joblib.Parallel(n_jobs=10)(joblib.delayed(run_model)(copy.deepcopy(modelb), cfg_, args) for cfg_ in cfg_list)
     opt_index = np.argmax([x[1] for x in results])
     best_model = results[opt_index][0]
     best_val_score = results[opt_index][1]
 
+    # print(results)
     print('best model score: ', best_val_score)
     return best_model, best_val_score

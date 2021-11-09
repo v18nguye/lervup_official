@@ -1,0 +1,16 @@
+_BASE_: "BASE.yaml"
+
+OUTPUT:
+  DIR: 'out'
+  VERBOSE: False
+
+GRID_SEARCH:
+  STATUS: True
+  CV: 5
+
+CLUSTEROR:
+  K_MEANS:
+    CLUSTERS: 4
+
+REGRESSOR:
+  TYPE: 'RF'

@@ -5,7 +5,7 @@ import json
 
 from .lib import corr, tau_subset, search_optimal_thres
 
-def base_opt(data, corr_type, sav_path, detector):
+def base_opt(data, corr_type, sav_path):
     """Run the baseline method with an optimal objectness-score 
     (object-detection-score) threshold per object (visual concept).
     
@@ -22,7 +22,8 @@ def base_opt(data, corr_type, sav_path, detector):
         save path
 
     """
-    train_uids, test_uids = data['train_user_ids'], data['test_user_ids']
+    train_uids, val_uids, test_uids = data['train_user_ids'], data['val_user_ids'], data['test_user_ids']
+    train_uids = {**train_uids, **val_uids}
     obj_situs = data['visual_concept_scores']
     gt_uexpo_situs = data['gt_user_exposure_scores']
     
@@ -62,7 +63,7 @@ def base_opt(data, corr_type, sav_path, detector):
             json.dump(est_opt_det_situs_save, fp)
 
     print('#-----------------------------------#')
-    print('# ' +detector.upper()+ ' TEST CORR')
+    print('# TEST CORR')
     print("#-----------------------------------#")
     for situ, gt_uexpo in gt_uexpo_situs.items():
         active_dets = est_opt_det_situs[situ]

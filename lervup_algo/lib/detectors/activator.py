@@ -27,7 +27,6 @@ def activator(vis_concepts, situ_name, path_pre_vis_concepts, load_detectors):
     """
     active_detectors = {}
     opt_threds = {}
-
     if not load_detectors:
         for class_, score in vis_concepts[situ_name].items():
                 active_detectors[class_] = score

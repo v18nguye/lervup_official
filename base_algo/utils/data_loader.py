@@ -1,7 +1,7 @@
 import os
 import json
 
-def load_train_test(path):
+def load_train_val_test(path):
     """Load pre-processed data
 
     :param root: string
@@ -27,7 +27,7 @@ def load_train_test(path):
     train_data = train_test_info['train']
     val_data = train_test_info['val']
 
-    return train_data, test_data
+    return train_data, val_data, test_data
 
 
 def load_gt_user_expo(path):
@@ -46,7 +46,7 @@ def load_gt_user_expo(path):
     return gt_usr_expo
 
 
-def load_situs(path, denormalization = True):
+def load_situs(path):
     """Load object situation under a dictionary form
 
     :param root: string
@@ -60,7 +60,7 @@ def load_situs(path, denormalization = True):
                 {situ1: {class1: score, ...}, ...}
     """
     class_situs = {}
-    situs = os.listdir(path)
+    situs = [x for x in os.listdir(path) if '.txt' in x]
 
 
     for situ in situs:
@@ -73,12 +73,7 @@ def load_situs(path, denormalization = True):
             for line in lines:
                 parts = line.split(' ')
                 class_ = parts[0]
-
-                if denormalization:
-                    score = float(parts[1])*3
-                else:
-                    score = float(parts[1])
-
+                score = float(parts[1])
                 class_situs[situ_key][class_] = score
 
     return class_situs

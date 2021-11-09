@@ -1,5 +1,8 @@
 import os
+from os.path import dirname, abspath
 import json
+import copy
+from detectors.activator import activator
 
 def train_test(root, path):
     """Load user profile train, test
@@ -44,7 +47,7 @@ def gt_user_expos(root, path):
     return gt_usr_expo
 
 
-def vis_concepts(root, path, denormalization = True):
+def vis_concepts(root, path):
     """Load object situation under a dictionary form
 
     :param root: string
@@ -70,11 +73,28 @@ def vis_concepts(root, path, denormalization = True):
             for line in lines:
                 parts = line.split(' ')
                 class_ = parts[0]
-                if denormalization:
-                    score = float(parts[1])*3
-                else:
-                    score = float(parts[1])
-
+                score = float(parts[1])
                 class_situs[situ_key][class_] = score
 
     return class_situs
+
+
+def data_loader(cfg, situation):
+    """
+    N: number of training profiles
+    :return:
+    """
+    root = abspath(__file__).split('/lervup_algo/lib/')[0]
+    # Basic data-loader
+    X_train_set, X_val_set, X_test_set = train_test(root, cfg.DATASETS.TRAIN_TEST_SPLIT)
+    expos = gt_user_expos(root, cfg.DATASETS.GT_USER_EXPOS)
+    concepts = vis_concepts(root, cfg.DATASETS.VIS_CONCEPTS)
+
+    situ_gt_expos = expos[situation]
+
+    # Construct active detectors
+    detectors, opt_threds = activator(concepts, situation, \
+                                      os.path.join(root, cfg.DATASETS.PRE_VIS_CONCEPTS), cfg.DETECTOR.LOAD)
+                                      
+    return X_train_set, X_val_set, X_test_set, \
+           situ_gt_expos, detectors, opt_threds

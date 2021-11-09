@@ -1,12 +1,12 @@
 import math
 import numpy as np
 
-def cut_off(x, tau = 9):
+def cut_off(x, tau = 20):
 
     if abs(x) <= tau:
         x_cut = x
     else:
-        x_cut = np.sign(x)*9
+        x_cut = np.sign(x)*tau
 
     return x_cut
 
